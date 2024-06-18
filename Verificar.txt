@@ -1,0 +1,49 @@
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Swing extends JFrame {
+
+    private JTextField txtName;
+    private JButton btnBotao;
+    private JLabel lblName;
+    private JPanel PanelMain;
+    private JTextField txtData;
+    private JTextField txtResultado;
+    private JRadioButton radioButton1;
+    private JCheckBox checkBox1;
+    private JPasswordField passwordField1;
+    private JTextArea textArea1;
+    private JComboBox comboBox1;
+    private JFormattedTextField formattedTextField1;
+    private JComboBox comboBox2;
+    private JList list1;
+
+    public Swing() {
+        btnBotao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //try {
+                    String nome = txtName.getText().replace(",", ".");
+                    //Float num = Float.parseFloat(nome);
+                    //txtResultado.setText(Float.toString(num));
+                    //JOptionPane.showMessageDialog(btnBotao, "Olá " + nome.replace(".", ",") + ", Welcome");
+                //} catch (Exception ec) {
+                    //JOptionPane.showMessageDialog(PanelMain, "ERRO", "Error", JOptionPane.ERROR_MESSAGE);
+                //}
+                //btnBotao.setEnabled(false);
+                //txtName.setEnabled(false);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        Swing s = new Swing();
+        s.getContentPane().add(s.PanelMain);
+        s.setTitle("Start");
+        s.setBounds(600, 200, 200, 200);
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        s.pack();
+    }
+}

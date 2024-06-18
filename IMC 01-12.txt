@@ -1,0 +1,103 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class IMC extends JFrame {
+    private JTextPane Resultado;
+    private JButton jButton1;
+    private JLabel jLabel1;
+    private JLabel jLabel2;
+    private JLabel jLabel3;
+    private JScrollPane jScrollPane1;
+    private JLabel lblPeso;
+    private JTextField txtAltura;
+    private JTextField txtPeso;
+    private JRadioButton radio_homem;
+    private JRadioButton radio_mulher;
+    private JPanel panelMain;
+    private JTextField txtIMC;
+    private ButtonGroup buttonGroup1;
+
+    public IMC() {
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String p = txtPeso.getText();
+                p = p.replace(",", ".");
+                String a = txtAltura.getText();
+                a = a.replace(",", ".");
+                double peso = Double.parseDouble(p);
+                double alt = Double.parseDouble(a);
+                double IMC = peso / (alt * alt);
+                double peso_ideal = 0.0;
+                Resultado.setText(String.format("%2.f", IMC));
+                if (IMC >= 18.5 && IMC <= 24.9) {
+                    JOptionPane.showMessageDialog(null, "Peso inferior ao normal");
+                } else if (IMC >= 24.9 && IMC <= 30.0) {
+                    JOptionPane.showMessageDialog(null, "Peso normal");
+                } else if (IMC >= 30.0 && IMC <= 40.0) {
+                    JOptionPane.showMessageDialog(null, "Acima do normal");
+                } else if (IMC > 40.0) {
+                    JOptionPane.showMessageDialog(null, "Valor incorreto");
+                }
+
+                if (radio_homem.isSelected()) {
+                    peso_ideal = 72.7 * alt - 58.0;
+                } else {
+                    peso_ideal = 62.7 * alt - 44.7;
+                }
+
+                JOptionPane.showMessageDialog(null, "Peso ideal: " + peso_ideal);
+
+            }
+        });
+
+        /*this.buttonGroup1 = new ButtonGroup();
+        this.jButton1 = new JButton();
+        this.jLabel1 = new JLabel();
+        this.jLabel2 = new JLabel();
+        this.jLabel3 = new JLabel();
+        this.jScrollPane1 = new JScrollPane();
+        this.txtAltura = new JTextField();
+        this.txtPeso = new JTextField();
+        this.radio_homem = new JRadioButton();
+        this.radio_mulher = new JRadioButton();
+        this.lblPeso = new JLabel();
+        this.Resultado = new JTextPane();
+
+         */
+        this.setDefaultCloseOperation(3);
+        this.setTitle("IMC");
+        this.setResizable(false);
+        this.jButton1.setFont(new Font("Arial", 0, 14));
+        this.lblPeso.setFont(new Font("Arial", 0, 14));
+        this.lblPeso.setText("Peso");
+        this.jLabel1.setFont(new Font("Arial", 0, 14));
+        this.jLabel1.setText("Altura");
+        this.jLabel2.setFont(new Font("Arial", 0, 14));
+        this.jLabel2.setText("IMC");
+        //this.jScrollPane1.setViewportView(this.Resultado);
+        this.buttonGroup1.add(radio_homem);
+        this.radio_homem.setText("Homem");
+        this.buttonGroup1.add(radio_mulher);
+        this.radio_homem.setText("Mulher");
+        this.jLabel3.setFont(new Font("Arial", 0, 24));
+        this.jLabel3.setText("Calculadora IMC");
+        GroupLayout layout = new GroupLayout(this.getContentPane());
+        this.getContentPane().setLayout(layout);
+        this.pack();
+    }
+
+    public static void main(String[] args) {
+        IMC imc = new IMC();
+        imc.getContentPane().add(imc.panelMain);
+        imc.setTitle("IMC");
+        imc.setBounds(600, 200, 200, 200);
+        imc.setVisible(true);
+        imc.setDefaultCloseOperation(3);
+    }
+}
+
+
+

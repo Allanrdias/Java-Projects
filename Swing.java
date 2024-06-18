@@ -1,0 +1,49 @@
+package org.example;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Swing extends JFrame {
+    private JPanel PanelMain;
+    private JTextField txtName;
+    private JButton btnBotao;
+    private JLabel lblName;
+    private JLabel lblResultado;
+
+    public Swing() {
+
+        btnBotao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //try {
+                    String name = txtName.getText();
+                    //float num = Float.parseFloat(name);
+                    //lblResultado.setText(String.format("%.2f", num))
+                    //int num = Integer.parseInt(name);
+                    //lblResultado.setText(Integer.toString(num));
+                    JOptionPane.showMessageDialog(btnBotao, "Hi " + name + ", welcome");
+                    txtName.setEnabled(false);
+                    btnBotao.setEnabled(false);
+                    //JOptionPane.showMessageDialog(btnBotao, "Hi " + txtName.getText() + ", welcome");
+                //} catch (Exception ex) {
+                    //JOptionPane.showMessageDialog(PanelMain , "Por gentileza, favor inserir um número inteiro", "Error", JOptionPane.ERROR_MESSAGE);
+                    //txtName.requestFocus();
+                //}
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+
+
+        Swing s = new Swing();
+        s.getContentPane().add(s.PanelMain);
+        s.setTitle("My firts panel");
+        s.setBounds(600, 200, 200, 200);
+        //s.setSize(300, 400);
+        s.setVisible(true);
+        s.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+}
